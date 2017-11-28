@@ -1,0 +1,94 @@
+<?php
+require 'db/DB.class.php';
+//inicia a conexão
+$db = new DB( 'cdoneda', //usuario
+              'dobipark',//senha
+              'doneda_bitencourt_park', //banco
+              'webacademico.canoas.ifrs.edu.br'//servidor
+            );
+
+extract($_REQUEST);//transformando os dados enviados em variaveis
+if(isset($usuario)){
+  $dados[0] = $usuario;
+  $dados[1] = $senha;
+  $db->execute("INSERT INTO usuario(usuario, senha) VALUES (?, ?)", $dados);
+}
+//deletar
+if(isset($id) && $acao == 'deletar'){
+  $dados[0] = $id;
+  $db->execute("DELETE FROM usuario WHERE id_usuario=?",$dados);
+}
+$dadosTemp['usuario'] = '';
+$dadosTemp['senha'] = '';
+
+if(isset($acao) && $acao == 'atualizarFim'){
+  $dados[0] = $usuario;
+  $dados[1] = $senha;
+  $dados[2] = $id;
+  $db->execute("UPDATE usuario SET usuario=?, senha=? WHERE id_usuario=?", $dados);
+}
+
+if(isset($acao) && $acao == 'atualizar'){
+  $consulta = $db->query("SELECT * FROM usuario
+                          WHERE id_usuario = $id");
+  foreach ($consulta as $linha) {
+    $dadosTemp = $linha;
+  }
+  $acao = 'atualizarFim';
+}
+
+
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form class="" action="index.php?acao=<?= $acao?>&id=<?=$id?>" method="post">
+      <input type="text" name="usuario" placeholder="Usuário" value="<?= $dadosTemp['usuario']?>">
+      <input type="text" name="senha" value="<?= $dadosTemp['senha']?>" placeholder="Senha">
+
+      <input type="submit" value="Upa lele">
+    </form>
+<ul>
+    <?php
+    $consulta = $db->query("SELECT * FROM usuario ORDER BY id_usuario DESC");
+    foreach ($consulta as $linha) {
+      ?>
+      <li><?= $linha['usuario']?>
+        <a href="?id=<?= $linha['id_usuario']?>&acao=deletar">Deletar</a>
+        <a href="?id=<?= $linha['id_usuario']?>&acao=atualizar">Atualizar</a>
+
+      </li>
+      <?php
+    }
+     ?>
+   </ul>
+
+  </body>
+</html>

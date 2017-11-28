@@ -1,0 +1,48 @@
+//logar com o usuário aroldo.
+//user: bd1_2015
+//pass: bdbd
+
+//exemplo web: CREATE USER dobibanze WITH PASSWORD 'dobibanze';
+
+CREATE ROLE banze_dobi CREATEDB LOGIN PASSWORD 'banze_dobi';
+
+//deletar usuário:
+DROP ROLE banze_dobi;
+
+
+
+
+
+GRANT SELECT ON doneda_bitencourt_park.marca TO banze_dobi;
+
+
+REVOKE ALL PRIVILEGES ON public.marca FROM banze_dobi;
+GRANT SELECT ON public.marca TO banze_dobi;
+
+
+//********************
+
+CREATE USER banze_dobi LOGIN PASSWORD 'dobiparkbanze';
+
+CREATE ROLE doneda_bitencourt;
+
+// GRANT INSERT ON marca TOdoneda_bitencourt
+GRANT INSERT ON marca TO banze_dobi;
+
+GRANT UPDATE ON marca, veiculo TO banze_dobi;
+
+
+GRANT SELECT ON marca, cor, veiculo,cliente, veiculo_cliente, contrato, tipo_contrato, estado_civil,
+municipio, estado, pais, empresa, funcionario, cargo, ponto, acesso, tipo_acesso, incidente, equipamento,
+cobranca_avulsa, forma_pagamento TO banze_dobi;
+
+
+
+GRANT SELECT ON nascido_decada_noventa TO doneda_bitencourt;
+GRANT SELECT ON sobrenome_silva TO doneda_bitencourt;
+GRANT SELECT ON entreanos TO doneda_bitencourt;
+GRANT SELECT ON ultimosdez TO doneda_bitencourt;
+GRANT SELECT ON tempo TO doneda_bitencourt;
+GRANT SELECT ON clientespoa TO doneda_bitencourt;
+GRANT SELECT ON contratos TO doneda_bitencourt;
+grant doneda_bitencourt TO banze_dobi;
