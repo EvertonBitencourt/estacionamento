@@ -1,3 +1,33 @@
+<?php
+require 'db/DB.class.php';
+//inicia a conexão
+$db = new DB('lzrymjxrdqcmhe', //usuario
+              'a0a6acc595e5c2591749b76679342e03b140dc8b81c1a6e757b5feba58b3e665',//senha
+              'd8ji7jlpf7b7rq', //banco
+              'ec2-50-16-204-127.compute-1.amazonaws.com'//servidor
+);
+
+//banze_jobdorneles 
+extract($_POST); //transformando os dados em variáveis
+$contador=0;
+$flag = false;
+if (isset($_POST['submit'])) {
+    $login = $_POST['login'];
+    $senha = $_POST['senha'];
+    $temp = $db->query("SELECT * FROM usuario WHERE login = '$login' AND senha = '$senha'");
+    foreach ($temp as $linha) {
+        $contador++;
+    }
+    if (($contador)<=0){
+         echo"<script language='javascript' type='text/javascript'>alert('Login e/ou senha incorretos');window.location.href='index.php';</script>";
+    }
+    else{
+        $flag = true;
+        echo"<script language='javascript' type='text/javascript'>alert('Login realizado!');window.location.href='index.php';</script>";
+    }
+}
+?>
+
 <!DOCTYPE html>
 
 <html>
@@ -82,7 +112,10 @@
             
             });
         </script>
-	
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="../../dist/js/bootstrap.min.js"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 	</body>
 </html>
 
