@@ -34,7 +34,7 @@
 					<li class="dropdown">
 					  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Relatórios <span class="caret"></span></a>
 					  <ul class="dropdown-menu">
-						<li><a href="#">Acessos</a></li>
+						<li><a href="acesso.php">>Acessos</a></li>
 						<li><a href="#">Clientes</a></li>
 					  </ul>
 					</li>
@@ -53,9 +53,9 @@
 				  </ul>
 				  
 				  <ul class="nav navbar-nav navbar-right">
-					<li><a href="#">ENTRADA <span class="sr-only">(current)</span></a></li>
-					<li><a href="#">SAÍDA <span class="sr-only">(current)</span></a></li>
-					<li><a href="#">PONTO <span class="sr-only">(current)</span></a></li>
+					<li><a href="entrada.php">ENTRADA <span class="sr-only">(current)</span></a></li>
+					<li><a href="saida.php">SAÍDA <span class="sr-only">(current)</span></a></li>
+					<li><a href="ponto.php">PONTO <span class="sr-only">(current)</span></a></li>
 				   </ul>
 			 
 			</div><!-- /.navbar-collapse -->

@@ -1,24 +1,4 @@
-<?php
-/*
-Primeiro abra o arquivo php.ini C:\xampp\php\php.ini,
-procure por extension=php_pdo_pgsql.dll extension=php_pgsql.dll
-e retire o ; "ponto e virgula" da frente dessas duas extenções.
-Retirando o "ponto e vírgula" você estará habilitando o suporte à
-  conexão ao banco de dados postgres.
-
-Em seguida copie o arquivo C:\xampp\php\libpq.dll para a pasta
-C:\xampp\apache\bin\libpq.dll e reinicie o Apache.
-
-
-*/
-
-
-/**
- * Classe DB para desenvolvimento de pequenos apps em php.
- * Não usar comercialmente caso tenha interesse use o projeto Enyalius (http://gitlab.com/enyalius)
- * @author Marcio Bigolin <marcio.bigolinn@gmail.com>
- * @version 1.0.0
- */
+<?php 
 class DB
 {
 
@@ -30,9 +10,9 @@ class DB
                                   $dbServer)
     {
         $str = 'pgsql:host=' . $dbServer . ';dbname=' . $dbName;
-		echo "<pre>";
-		print_r(get_declared_classes());
-		//die;
+    //echo "<pre>";
+    //print_r(get_declared_classes());
+    //die;
         try {
             $this->database = new PDO($str, $user, $password);
             //Exibe todos os erros de SQL
@@ -123,3 +103,4 @@ class DB
     }
 
 }
+?>

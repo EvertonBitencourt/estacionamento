@@ -7,14 +7,14 @@ $db = new DB('lzrymjxrdqcmhe', //usuario
               'ec2-50-16-204-127.compute-1.amazonaws.com'//servidor
 );
 
-//banze_jobdorneles 
+
 extract($_POST); //transformando os dados em variáveis
 $contador=0;
 $flag = false;
 if (isset($_POST['submit'])) {
-    $login = $_POST['login'];
+    $email = $_POST['email'];
     $senha = $_POST['senha'];
-    $temp = $db->query("SELECT * FROM usuario WHERE login = '$login' AND senha = '$senha'");
+    $temp = $db->query("SELECT * FROM usuario WHERE email = '$email' AND senha = '$senha'");
     foreach ($temp as $linha) {
         $contador++;
     }
@@ -58,21 +58,21 @@ if (isset($_POST['submit'])) {
 	<body>
 
 		<div class="container" id="main">
-			<? require_once "menu.php" ?>	
+			<?php include_once "menu.php"; ?>	
 			<div>
-				<form role="form">
+				<form role="form" method="post">
 				  <div class="form-group">
 					<label for="email">Email:</label>
-					<input type="email" class="form-control" id="email">
+					<input type="email" class="form-control" id="email"  name="email">
 				  </div>
 				  <div class="form-group">
 					<label for="pwd">Senha:</label>
-					<input type="password" class="form-control" id="pwd">
+					<input type="password" class="form-control" id="pwd" name="senha">
 				  </div>
 				  <div class="checkbox">
 					<label><input type="checkbox"> Lembre-me</label>
 				  </div>
-				  <button type="submit" class="btn btn-default">Enviar</button>
+				  <button type="submit"  name="submit" class="btn btn-default">Enviar</button>
 				</form>
 			</div>
 		</div> <!-- end container -->
